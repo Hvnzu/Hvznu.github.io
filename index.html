@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stolarski Zakład</title>
-    <!-- Link do stylów Swiper.js -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,40 +14,27 @@
 
         header {
             background-color: #fafae7;
+            color: #fff;
             padding: 1rem 0;
             text-align: center;
         }
 
-        /* Styl karuzeli w nagłówku */
-        .swiper-container {
-            width: 100%;
-            height: 500px; /* Wysokość karuzeli */
+        header img {
+            width: 100%; /* Rozciąga obraz na całą szerokość strony */
+            height: auto; /* Utrzymuje proporcje obrazu */
+            max-height: 300px; /* Maksymalna wysokość */
+            display: block; /* Usuwa domyślne odstępy */
+            margin: 0; /* Usuwa marginesy */
+            padding: 0; /* Usuwa padding */
         }
 
-        .swiper-slide {
-            text-align: center;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .swiper-slide img {
-            width: 100%; /* Wszystkie obrazki mają tę samą szerokość */
-            height: 500px; /* Ustawiona wysokość obrazka */
-            object-fit: contain; /* Obrazki są w całości widoczne i dopasowane do kontenera */
-        }
-
-        /* Styl dla h1, aby tekst był czarny */
         header h1 {
-            color: black;
-            margin-top: 10px;
+            color: black; /* Kolor czarny dla tekstu */
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
         }
 
         nav ul li {
@@ -80,25 +64,63 @@
             width: 100%;
             bottom: 0;
         }
+
+        /* Karuzela */
+        .carousel {
+            width: 100%;
+            position: relative;
+        }
+
+        .carousel-inner {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Zmodyfikowany styl obrazków */
+        .carousel-item img {
+            width: 70vw; /* Ustaw szerokość obrazka na 70% szerokości okna */
+            height: auto; /* Zachowaj proporcje obrazu */
+            display: block; /* Aby centrować obraz */
+            margin: 0 auto; /* Aby obrazek był centrowany */
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            font-size: 2rem;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+
+        /* Dodatkowo usuń marginesy i padding z ciała karuzeli */
+        .carousel-inner {
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
     <header>
+        <img src="450544371_782769254049528_5835290374706541674_n.jpg" alt="Zdjęcie nagłówka">
         <h1>Stolarski Zakład</h1>
-        
-        <!-- Karuzela Swiper w nagłówku -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="450544371_782769254049528_5835290374706541674_n.jpg" alt="Zdjęcie 1"></div>
-                <div class="swiper-slide"><img src="450812531_782769654049488_5071849376558148786_n.jpg" alt="Zdjęcie 2"></div>
-                <div class="swiper-slide"><img src="453481047_795846216075165_6794552279761309233_n.jpg" alt="Zdjęcie 3"></div>
-            </div>
-            <!-- Dodanie nawigacji -->
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-        
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -108,44 +130,70 @@
             </ul>
         </nav>
     </header>
-
     <main>
         <section id="home">
             <h2>Witamy w naszym zakładzie stolarskim</h2>
             <p>Specjalizujemy się w tworzeniu wysokiej jakości mebli na zamówienie.</p>
         </section>
+
+        <!-- Karuzela obrazków -->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="450544371_782769254049528_5835290374706541674_n.jpg" alt="Obrazek 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="450812531_782769654049488_5071849376558148786_n.jpg" alt="Obrazek 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="453481047_795846216075165_6794552279761309233_n.jpg" alt="Obrazek 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" onclick="prevSlide()">&#8249;</button>
+            <button class="carousel-control-next" onclick="nextSlide()">&#8250;</button>
+        </div>
+
         <section id="about">
             <h2>O nas</h2>
             <p>Jesteśmy firmą z wieloletnim doświadczeniem w branży stolarskiej.</p>
         </section>
+
         <section id="services">
             <h2>Usługi</h2>
             <p>Oferujemy szeroki zakres usług stolarskich, w tym projektowanie i wykonanie mebli.</p>
         </section>
+
         <section id="contact">
             <h2>Kontakt</h2>
             <p>Skontaktuj się z nami pod numerem telefonu: 123-456-789 lub e-mailem: info@stolarski-zaklad.pl</p>
         </section>
     </main>
-
     <footer>
         <p>© 2024 Stolarski Zakład. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- Dodanie skryptu Swiper.js -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            });
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+            showSlide(currentSlide);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+            showSlide(currentSlide);
+        }
+
+        // Inicjalizacja pierwszego slajdu
+        showSlide(currentSlide);
     </script>
 </body>
 </html>
