@@ -23,7 +23,7 @@
 
         /* Styl karuzeli w nagłówku */
         .swiper-container {
-            width: 80%;
+            width: 100%;
             height: 400px; /* Wysokość karuzeli */
         }
 
@@ -37,12 +37,13 @@
 
         .swiper-slide img {
             width: 100%;
-            height: auto;
+            height: 400px; /* Wszystkie obrazki będą miały tę samą wysokość */
+            object-fit: cover; /* Przytnij obraz, aby wypełnił kontener */
         }
 
         /* Styl dla h1, aby tekst był czarny */
         header h1 {
-            color: black; /* Kolor czarny dla tekstu */
+            color: black;
             margin-top: 10px;
         }
 
@@ -148,4 +149,3 @@
     </script>
 </body>
 </html>
-
